@@ -1,0 +1,53 @@
+/*
+Ejercicio 5-2:
+Pedir el ingreso de 10 números enteros entre -1000 y 1000. Determinar:
+Cantidad de positivos y negativos.
+Sumatoria de los pares.
+El mayor de los impares.
+Listado de los números ingresados.
+Listado de los números pares.
+Listado de los números de las posiciones impares.
+Los números que se repiten
+Los positivos creciente y los negativos de manera decreciente
+Se deberán utilizar funciones y vectores.
+
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int inicializarArray (int array[], int len, int numero);
+
+int main(void) {
+	setbuf(stdout, NULL);
+	int arrayNumeros[10];
+	int resultado;
+
+
+
+	inicializarArray (arrayNumeros,10,0);
+	 if(resultado==0)
+	 {
+		 printf("%d", resultado);
+	 }
+
+
+
+	return EXIT_SUCCESS;
+}
+
+int inicializarArray (int array[], int len, int numero)
+{
+	int retorno=0;
+	int i=0;
+
+	if(array!=NULL && len>0)
+	{
+		for(i=0;i<len;i++)
+		{
+			array[i]=numero;
+		}
+
+	}
+	return retorno;
+}

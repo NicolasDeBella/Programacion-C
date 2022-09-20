@@ -1,0 +1,48 @@
+
+/*
+ ============================================================================
+ Name        : FuncionesDeValidaciones.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+int utn_getNumeroEntero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos)
+{
+	int retorno=-1;/* me devuelve error*/
+	int bufferInt;/*guarda mensajes del usuario en la variable*/
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+
+		printf("%s",mensaje);
+		scanf("%d",&bufferInt);
+		if(bufferInt>=minimo && bufferInt<=maximo)
+		{
+			*resultado=bufferInt;
+			retorno=0;
+		}else
+		{
+			printf("%s",mensajeError);
+		}
+
+
+
+	}
+
+
+
+
+	return retorno;
+
+}
+
+

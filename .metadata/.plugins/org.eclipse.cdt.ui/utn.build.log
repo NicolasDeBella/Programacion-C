@@ -1,0 +1,6 @@
+18:32:14 **** Incremental Build of configuration Debug for project utn ****
+Info: Internal Builder is used for build
+gcc -o utn.exe "src\\utn.o" 
+
+18:32:15 Build Finished. 0 errors, 0 warnings. (took 506ms)
+

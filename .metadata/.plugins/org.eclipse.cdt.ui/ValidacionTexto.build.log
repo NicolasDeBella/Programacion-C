@@ -1,0 +1,38 @@
+19:06:28 **** Incremental Build of configuration Debug for project ValidacionTexto ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ValidacionTexto.o" "..\\src\\ValidacionTexto.c" 
+..\src\ValidacionTexto.c: In function 'getString':
+..\src\ValidacionTexto.c:70:58: warning: passing argument 1 of 'soloLetra' makes pointer from integer without a cast [-Wint-conversion]
+   70 |  if(myGets(bufferChar,sizeof(bufferChar)==0 && soloLetra(bufferChar))
+      |                                                          ^~~~~~~~~~
+      |                                                          |
+      |                                                          char
+..\src\ValidacionTexto.c:46:21: note: expected 'char *' but argument is of type 'char'
+   46 | int soloLetra (char cadena[])
+      |                ~~~~~^~~~~~~~
+..\src\ValidacionTexto.c:70:12: warning: passing argument 1 of 'myGets' makes pointer from integer without a cast [-Wint-conversion]
+   70 |  if(myGets(bufferChar,sizeof(bufferChar)==0 && soloLetra(bufferChar))
+      |            ^~~~~~~~~~
+      |            |
+      |            char
+..\src\ValidacionTexto.c:38:19: note: expected 'char *' but argument is of type 'char'
+   38 | int myGets (char *cadena, int longitud)
+      |             ~~~~~~^~~~~~
+..\src\ValidacionTexto.c:70:70: error: expected ')' before '{' token
+   70 |  if(myGets(bufferChar,sizeof(bufferChar)==0 && soloLetra(bufferChar))
+      |    ~                                                                 ^
+      |                                                                      )
+   71 |  {
+      |  ~                                                                    
+..\src\ValidacionTexto.c:77:1: error: expected expression before '}' token
+   77 | }
+      | ^
+..\src\ValidacionTexto.c:68:6: warning: unused variable 'retorno' [-Wunused-variable]
+   68 |  int retorno=-1;
+      |      ^~~~~~~
+..\src\ValidacionTexto.c:77:1: warning: control reaches end of non-void function [-Wreturn-type]
+   77 | }
+      | ^
+
+19:06:35 Build Failed. 2 errors, 4 warnings. (took 7s.49ms)
+

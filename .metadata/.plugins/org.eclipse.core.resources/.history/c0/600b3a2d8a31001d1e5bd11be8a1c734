@@ -1,0 +1,186 @@
+
+/*
+ ============================================================================
+ Name        : FuncionesDeValidaciones.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int utn_getNumero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos);
+int utn_getCaracter(char *resultado,char *mensaje, char *mensajeError,char minimo, char maximo, int reintentos);
+int utn_getNumeroFlotante(float *resultado,char *mensaje, char *mensajeError,float minimo, float maximo, int reintentos);
+static int myGets (char *cadena, int longitud);
+static int getInt(int *resultado);
+static int esNumerica(char* cadena);
+int main(void) {
+	setbuf(stdout, NULL);
+
+	char resultado;
+	char letra;
+
+	resultado=utn_getCaracter(&letra,"Ingrese una letra entre la a y b \n","ERROR\n",'a','b',3);
+	if(resultado==0)
+	{
+		printf("La letra es: %c\n",letra);
+	}
+	else
+	{
+		printf("ERROR");
+	}
+	return EXIT_SUCCESS;
+}
+
+static int myGets (char *cadena, int longitud)
+{
+	int retorno=-1;
+	fflush(stdin);
+	fgets(cadena,longitud,stdin);
+	cadena[strlen(cadena)-1]='\0';//resta el enter ('\0')//
+	return retorno;
+}
+
+
+static int getInt(int *resultado)
+{
+	int retorno = -1;
+	char buffer[500];
+	if (resultado != NULL)
+	{
+
+		if (myGets(buffer, sizeof(buffer)) == 0 && esNumerica(buffer))
+				{
+					retorno = 0;
+					*resultado = atoi(buffer);
+
+				}
+
+
+	}
+	return retorno;
+}
+
+
+static int esNumerica(char* cadena)
+{
+	int i = 0;
+	int retorno = -1;
+	if(cadena[0]=='-')
+	{
+		i=1;
+	}
+
+	if (cadena != NULL && strlen(cadena) > 0)
+	{
+		for(;cadena[i] != '\0';i++)
+			{
+					if (cadena[i] < '0' || cadena[i] > '9')
+					{
+						retorno = 0;
+						break;
+					}
+
+			}
+	}
+
+	return retorno;
+}
+
+
+
+
+
+int utn_getNumero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos)
+{
+	int retorno=-1;//me devuelve error//
+	int bufferInt;/*guarda mensajes del usuario en la variable*/
+
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+		do
+		{
+			printf("%s", mensaje);
+			if(getInt(&bufferInt)==0)
+			{
+				if (getInt(&bufferInt) >= minimo && getInt(&bufferInt) <= maximo)
+				{
+					*resultado = bufferInt;
+					retorno = 0;
+
+				}
+				else
+				{
+					printf("%s", mensajeError);
+					reintentos--;
+				}
+
+			}
+
+
+		}while(reintentos>=0);
+
+	}
+	return retorno;
+
+}
+
+int utn_getNumeroFlotante(float *resultado,char *mensaje, char *mensajeError,float minimo, float maximo, int reintentos)
+{
+	int retorno=-1;/* me devuelve error*/
+	float bufferFloat;/*guarda mensajes del usuario en la variable*/
+
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+		do
+		{
+			printf("%s", mensaje);
+			scanf("%f", &bufferFloat);
+			if (bufferFloat >= minimo && bufferFloat <= maximo) {
+				*resultado = bufferFloat;
+				retorno = 0;
+
+			} else {
+				printf("%s", mensajeError);
+				reintentos--;
+			}
+
+		}while(reintentos>=0);
+
+	}
+	return retorno;
+
+}
+
+int utn_getCaracter(char *resultado,char *mensaje, char *mensajeError,char minimo, char maximo, int reintentos)
+{
+	int retorno=-1;/* me devuelve error*/
+	char bufferChar;/*guarda mensajes del usuario en la variable*/
+
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+		do
+		{
+			printf("%s", mensaje);
+			fflush(stdin);/*forzar ese volcado de información al dispositivo de salida*/
+			scanf("%c", &bufferChar);
+
+			if (bufferChar >= minimo && bufferChar <= maximo) {
+				*resultado = bufferChar;
+				retorno = 0;
+
+			} else {
+				printf("%s", mensajeError);
+				reintentos--;
+			}
+		} while (reintentos >= 0);
+	}
+
+	return retorno;
+
+}
+

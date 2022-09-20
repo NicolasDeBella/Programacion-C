@@ -1,0 +1,10 @@
+14:39:26 **** Incremental Build of configuration Debug for project BibliotecaDeFuncionesImportantes ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\BibliotecaDeFuncionesImportantes.o" "..\\src\\BibliotecaDeFuncionesImportantes.c" 
+..\src\BibliotecaDeFuncionesImportantes.c:15:10: fatal error: utn.h: No such file or directory
+   15 | #include "utn.h"
+      |          ^~~~~~~
+compilation terminated.
+
+14:39:27 Build Failed. 1 errors, 0 warnings. (took 426ms)
+

@@ -1,0 +1,21 @@
+/*
+ * utn.h
+ *
+ *  Created on: 11 sep. 2022
+ *      Author: nico9
+ */
+
+#ifndef UTN_H_
+#define UTN_H_
+int utn_getNumero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos);
+int utn_getCaracter(char *resultado,char *mensaje, char *mensajeError,char minimo, char maximo, int reintentos);
+int utn_getNumeroFlotante(float *resultado,char *mensaje, char *mensajeError,float minimo, float maximo, int reintentos);
+static int myGets (char *cadena, int longitud);
+static int getInt(int *resultado);
+static int esNumerica(char* cadena);
+int dividir(float *resultado, int operador1, int operador2);
+void imprimirArray (int array[], int longitud);//por referencia, puedo leer o escribir//
+float promediarArray(int array[], int longitud);
+
+
+#endif /* UTN_H_ */

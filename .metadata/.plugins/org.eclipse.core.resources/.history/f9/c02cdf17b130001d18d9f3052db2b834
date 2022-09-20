@@ -1,0 +1,102 @@
+
+/*
+ ============================================================================
+ Name        : FuncionesDeValidaciones.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+int utn_getNumeroEntero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos);
+int utn_getCaracter(char *resultado,char *mensaje, char *mensajeError,char minimo, char maximo, int reintentos);
+
+int main(void) {
+	setbuf(stdout, NULL);
+
+	char resultado;
+	char letra;
+
+	resultado=utn_getCaracter(&letra,"Ingrese una letra entre la a y b \n","ERROR\n",'a','b',3);
+	if(resultado==0)
+	{
+		printf("La letra es: %c\n",letra);
+	}
+	else
+	{
+		printf("ERROR");
+	}
+	return EXIT_SUCCESS;
+}
+
+
+int utn_getNumeroEntero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos)
+{
+	int retorno=-1;/* me devuelve error*/
+	int bufferInt;/*guarda mensajes del usuario en la variable*/
+	int i=0;
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+
+		for(i=0;i<reintentos;i++)
+		{
+			printf("%s",mensaje);
+			scanf("%d",&bufferInt);
+			if(bufferInt>=minimo && bufferInt<=maximo)
+			{
+				*resultado=bufferInt;
+				retorno=0;
+				break;
+			}else
+			{
+				printf("%s",mensajeError);
+				reintentos--;
+			}
+
+		}
+
+	}
+
+
+	return retorno;
+
+}
+
+
+int utn_getCaracter(char *resultado,char *mensaje, char *mensajeError,char minimo, char maximo, int reintentos)
+{
+	int retorno=-1;/* me devuelve error*/
+	char bufferChar;/*guarda mensajes del usuario en la variable*/
+	int i=0;
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+
+		for(i=0;i<reintentos;i++)
+		{
+			printf("%s",mensaje);
+			fflush(stdin);/*forzar ese volcado de información al dispositivo de salida*/
+			scanf("%c",&bufferChar);
+
+			if(bufferChar>=minimo && bufferChar<=maximo)
+			{
+				*resultado=bufferChar;
+				retorno=0;
+				break;
+			}else
+			{
+				printf("%s",mensajeError);
+				reintentos--;
+			}
+
+		}
+
+	}
+
+
+	return retorno;
+
+}
+

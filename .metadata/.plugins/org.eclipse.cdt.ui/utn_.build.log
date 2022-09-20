@@ -1,0 +1,27 @@
+14:01:57 **** Incremental Build of configuration Debug for project utn_ ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn_.o" "..\\src\\utn_.c" 
+..\src\utn_.c: In function 'dividir':
+..\src\utn_.c:195:25: warning: passing argument 1 of 'atof' makes pointer from integer without a cast [-Wint-conversion]
+  195 |   resultadoFuncion=atof(operador1)/operador2;
+      |                         ^~~~~~~~~
+      |                         |
+      |                         int
+In file included from ..\src\utn_.c:13:
+c:\mingw\include\stdlib.h:366:47: note: expected 'const char *' but argument is of type 'int'
+  366 | _CRTIMP __cdecl __MINGW_NOTHROW  double atof (const char *);
+      |                                               ^~~~~~~~~~~~
+..\src\utn_.c: In function 'promediarArray':
+..\src\utn_.c:223:17: warning: passing argument 1 of 'atoi' makes pointer from integer without a cast [-Wint-conversion]
+  223 |  resultado=atoi(acumulador)/longitud;
+      |                 ^~~~~~~~~~
+      |                 |
+      |                 int
+In file included from ..\src\utn_.c:13:
+c:\mingw\include\stdlib.h:362:44: note: expected 'const char *' but argument is of type 'int'
+  362 | _CRTIMP __cdecl __MINGW_NOTHROW  int atoi (const char *);
+      |                                            ^~~~~~~~~~~~
+gcc -o utn_.exe "src\\utn_.o" 
+
+14:01:58 Build Finished. 0 errors, 2 warnings. (took 963ms)
+

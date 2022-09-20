@@ -1,0 +1,23 @@
+14:00:11 **** Incremental Build of configuration Debug for project prueba ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\prueba.o" "..\\src\\prueba.c" 
+..\src\prueba.c: In function 'Sumar2':
+..\src\prueba.c:50:6: warning: variable 'suma' set but not used [-Wunused-but-set-variable]
+   50 |  int suma;
+      |      ^~~~
+..\src\prueba.c:52:7: warning: 'numeroA' is used uninitialized in this function [-Wuninitialized]
+   52 |  suma = numeroA + numeroB;
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~
+..\src\prueba.c:52:7: warning: 'numeroB' is used uninitialized in this function [-Wuninitialized]
+..\src\prueba.c:54:9: warning: 'retorno' is used uninitialized in this function [-Wuninitialized]
+   54 |  return retorno;
+      |         ^~~~~~~
+..\src\prueba.c: In function 'Sumar4':
+..\src\prueba.c:69:7: warning: 'numeroA' is used uninitialized in this function [-Wuninitialized]
+   69 |  suma = numeroA + numeroB;
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~
+..\src\prueba.c:69:7: warning: 'numeroB' is used uninitialized in this function [-Wuninitialized]
+gcc -o prueba.exe "src\\prueba.o" 
+
+14:00:15 Build Finished. 0 errors, 6 warnings. (took 4s.642ms)
+

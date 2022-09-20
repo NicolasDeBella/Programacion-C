@@ -1,0 +1,97 @@
+/*
+ * utn.c
+ *
+ *  Created on: 11 sep. 2022
+ *      Author: nico9
+ */
+
+
+static int myGets (char *cadena, int longitud)
+{
+	int retorno=-1;
+	fflush(stdin);
+	fgets(cadena,longitud,stdin);
+	cadena[strlen(cadena)-1]='\0';//resta el enter ('\0')//
+	return retorno;
+}
+
+
+static int getInt(int *resultado)
+{
+	int retorno = -1;
+	char buffer[500];
+	if (resultado != NULL)
+	{
+
+		if (myGets(buffer, sizeof(buffer)) == 0 && esNumerica(buffer))
+				{
+					retorno = 0;
+					*resultado = atoi(buffer);
+
+				}
+
+
+	}
+	return retorno;
+}
+
+
+static int esNumerica(char* cadena)
+{
+	int i = 0;
+	int retorno = -1;
+	if(cadena[0]=='-')
+	{
+		i=1;
+	}
+
+	if (cadena != NULL && strlen(cadena) > 0)
+	{
+		for(;cadena[i] != '\0';i++)
+			{
+					if (cadena[i] < '0' || cadena[i] > '9')
+					{
+						retorno = 0;
+						break;
+					}
+
+			}
+	}
+
+	return retorno;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int utn_getNumero(int *resultado,char *mensaje, char *mensajeError,int minimo, int maximo, int reintentos)
+{
+	int retorno=-1;//me devuelve error//
+	int bufferInt;/*guarda mensajes del usuario en la variable*/
+
+	if(resultado!=NULL && mensaje!=NULL && mensajeError !=NULL && minimo<=maximo && reintentos >=0)
+	{
+		do
+		{
+			printf("%s", mensaje);
+			if(getInt(&bufferInt)==0)
+			{
+				if (getInt(&bufferInt) >= minimo && getInt(&bufferInt) <= maximo)
+				{
+					*resultado = bufferInt;
+					retorno = 0;
+
+				}
+				else
+				{
+					printf("%s", mensajeError);
+					reintentos--;
+				}
+
+			}
+
+
+		}while(reintentos>=0);
